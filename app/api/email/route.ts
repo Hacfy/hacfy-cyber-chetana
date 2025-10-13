@@ -206,9 +206,9 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
   <body>
     <div class="certificate">
       <div class="logo">
-        <span class="orange">HACFY</span> <span class="blue">CYBER CHETANA</span>
+       <img src="/assets/logo.png" alt="Logo" class="logo" />
       </div>
-      <div class="tagline">Your Digital Safety, Our Priority</div>
+    
       <div class="header">CERTIFICATE OF CYBER AWARENESS COMMITMENT</div>
 
       <div class="title">THIS IS TO CERTIFY THAT</div>
