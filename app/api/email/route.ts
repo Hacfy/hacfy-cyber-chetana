@@ -137,7 +137,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
 
     .certificate {
       width: 1100px;       /* ~11in */
-      height: 820px;       /* ~8.2in */
+      height: 720px;       /* ~8.2in */
       border: 6px double #1e3a8a;
       border-radius: 8px;
       padding: 40px 60px;
