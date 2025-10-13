@@ -1,102 +1,83 @@
+"use client";
 
-import { cn } from "@/lib/utils";
-import { Marquee } from "@/components/magicui/marquee";
-import { NumberTicker } from "@/components/magicui/number-ticker";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
-const reviews = [
+const cybercrimeData = [
   {
-    name: "Cybercrime Financial Loss in Karnataka",
-    number: 2047.2,
-    unit: "Crore",
+    category: "Financial Loss",
+    value: 2047,
+    displayValue: "₹2,047 Cr",
+    color: "#FF6B35",
   },
   {
-    name: "Cybercrime Cases Reported in Karnataka",
-    number: 20875,
-    unit: "Cases",
+    category: "Cases Reported",
+    value: 20875,
+    displayValue: "20,875",
+    color: "#1E3A8A",
   },
   {
-    name: "Industry Impact in Karnataka",
-    number: 6.84,
-    unit: "Million",
+    category: "Industry Impact",
+    value: 684,
+    displayValue: "₹6.84 M",
+    color: "#F59E0B",
   },
   {
-    name: "Daily Cybercrime Cases Registered in Karnataka",
-    number: 63,
-    unit: "Cases",
+    category: "Daily Cases",
+    value: 63,
+    displayValue: "63 Cases/Day",
+    color: "#DC2626",
   },
 ];
 
-const ReviewCard = ({
-  name,
-  number,
-  unit,
-}: {
-  name: string;
-  number: number;
-  unit: string;
-}) => {
-  return (
-    <figure
-      className={cn(
-        "relative  w-full md:w-[45%] cursor-pointer overflow-hidden rounded-lg border p-3 flex flex-col justify-between items-center text-center",
-        "shadow-md transition-all hover:bg-gray-100"
-      )}
-    >
-    
-      <figcaption
-        className="text-xl font-bold min-h-[50px] flex items-center text-width w-[70%]"
-        style={{ color: "var(--primary-blue)" }}
-      >
-        {name}
-      </figcaption>
-
-   
-      <blockquote className="text-2xl font-bold flex items-center">
-        <NumberTicker
-          value={number}
-          decimalPlaces={unit ? 2 : 0}
-          className="text-4xl"
-          style={{ color: "var(--primary-orange)" }}
-        />
-        {unit && (
-          <span
-            className="text-2xl font-semibold ml-1"
-            style={{ color: "var(--primary-orange)" }}
-          >
-            {unit}
-          </span>
-        )}
-        <span
-          className="text-2xl font-bold"
-          style={{ color: "var(--primary-orange)" }}
-        >
-          +
-        </span>
-      </blockquote>
-    </figure>
-  );
-};
-
 export function MarqueeDemo() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white py-10 px-10">
-    <div
-  className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-center mb-6 leading-snug sm:leading-tight md:leading-tight"
-  style={{ color: "var(--primary-blue)", maxWidth: "90%" }}
->
-  Cybercrimes in Karnataka  
-  <br className="hidden sm:block" />  
-  Rising Rapidly, Threatening Lives & Finances!
+    <div className="relative flex w-full bg-white py-10 px-4 sm:px-6 lg:px-10">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* Left Side - Heading */}
+<div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
+  <h2
+    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-4"
+    style={{ color: "var(--primary-blue)" }}
+  >
+    Cybercrimes in Karnataka
+    <br />
+    Rising Rapidly, Threatening Lives & Finances!
+  </h2>
+  <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
+    Track the alarming rise in cybercrime incidents across Karnataka. 
+    From financial fraud to identity theft, the numbers tell a concerning story 
+    of digital threats impacting lives and businesses.
+  </p>
 </div>
 
-      <Marquee pauseOnHover className="[--duration:70s] flex w-full gap-4">
-        {reviews.map((review, index) => (
-          <ReviewCard key={index} {...review} />
-        ))}
-      </Marquee>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-white"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-white"></div>
+          {/* Right Side - Graph */}
+          <div className="w-full bg-white rounded-xl border-2 shadow-lg p-6">
+            <h3
+              className="text-2xl font-bold mb-6 text-center"
+              style={{ color: "var(--primary-blue)" }}
+            >
+              2024 Cybercrime Statistics
+            </h3>
+            <ResponsiveContainer width="100%" height={400}>
+              <BarChart data={cybercrimeData} layout="vertical">
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" />
+                <YAxis dataKey="category" type="category" width={120} />
+                <Tooltip 
+                  formatter={(value, name, props) => props.payload.displayValue}
+                />
+                <Bar dataKey="value" radius={[0, 8, 8, 0]}>
+                  {cybercrimeData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
