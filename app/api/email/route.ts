@@ -131,7 +131,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0;
+      margin: 5;
       padding: 0;
     }
 
