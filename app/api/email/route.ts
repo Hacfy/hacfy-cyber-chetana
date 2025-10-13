@@ -124,7 +124,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
         padding: 0;
         align-items: center;      /* ✅ Vertically center */
        justify-content: center;  /* ✅ Horizontally center */
-   height: 100vh;            /* ✅ Full page height */
+        height: 100vh;            /* ✅ Full page height */
       }
 
       .certificate {
@@ -255,7 +255,7 @@ export async function POST(req: NextRequest) {
     // ✅ Custom PDF dimensions — NOT A4, perfect certificate size
     const pdfBuffer = await page.pdf({
       width: '11in',      // landscape certificate width
-      height: '8.5in',    // certificate height
+      height: '8.2in',    // certificate height
       printBackground: true,
       margin: { top: 0, right: 0, bottom: 0, left: 0 },
     });
