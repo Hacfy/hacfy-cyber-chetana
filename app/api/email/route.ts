@@ -122,6 +122,9 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
         text-align: center;
         margin: 0;
         padding: 0;
+        align-items: center;      /* ✅ Vertically center */
+       justify-content: center;  /* ✅ Horizontally center */
+   height: 100vh;            /* ✅ Full page height */
       }
 
       .certificate {
