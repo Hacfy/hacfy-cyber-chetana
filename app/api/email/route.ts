@@ -119,17 +119,20 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       body {
         font-family: 'Arial', sans-serif;
         background-color: #ffffff;
-        padding: 40px;
         text-align: center;
+        margin: 0;
+        padding: 0;
       }
 
       .certificate {
+        width: 1000px;  /* fixed width for certificate */
+        height: 700px;  /* fixed height for certificate */
         border: 6px double #1e3a8a;
         border-radius: 8px;
         padding: 40px 60px;
-        max-width: 850px;
         margin: 0 auto;
         position: relative;
+        box-sizing: border-box;
       }
 
       .header {
@@ -138,12 +141,6 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
         color: #1e3a8a;
         text-transform: uppercase;
         letter-spacing: 1px;
-      }
-
-      .subheader {
-        font-size: 18px;
-        color: #1e3a8a;
-        margin-bottom: 30px;
       }
 
       .title {
@@ -176,7 +173,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       }
 
       .logo {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
 
       .logo span.orange {
@@ -251,7 +248,15 @@ export async function POST(req: NextRequest) {
 
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-    const pdfBuffer = await page.pdf({ format: 'a4', printBackground: true });
+
+    // ✅ Custom PDF dimensions — NOT A4, perfect certificate size
+    const pdfBuffer = await page.pdf({
+      width: '11in',      // landscape certificate width
+      height: '8.5in',    // certificate height
+      printBackground: true,
+      margin: { top: 0, right: 0, bottom: 0, left: 0 },
+    });
+
     await browser.close();
 
     const transporter = nodemailer.createTransport({
