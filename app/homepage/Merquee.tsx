@@ -7,25 +7,25 @@ const cybercrimeData = [
     category: "Financial Loss",
     value: 2047,
     displayValue: "₹2,047 Cr",
-    color: "#FF6B35",
+    color: "#09437d",
   },
   {
     category: "Cases Reported",
     value: 20875,
     displayValue: "20,875",
-    color: "#1E3A8A",
+    color: "#ff8533",
   },
   {
     category: "Industry Impact",
     value: 684,
     displayValue: "₹6.84 M",
-    color: "#F59E0B",
+    color: "#09437d",
   },
   {
     category: "Daily Cases",
     value: 63,
     displayValue: "63 Cases/Day",
-    color: "#DC2626",
+    color: "#ff8533",
   },
 ];
 
@@ -34,7 +34,7 @@ export function MarqueeDemo() {
     <div className="relative flex w-full bg-white py-10 px-4 sm:px-6 lg:px-10">
       <div className="w-full max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* Left Side - Heading */}
+       
 <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
   <h2
     className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-4"
@@ -52,7 +52,6 @@ export function MarqueeDemo() {
 </div>
 
 
-          {/* Right Side - Graph */}
           <div className="w-full bg-white rounded-xl border-2 shadow-lg p-6">
             <h3
               className="text-2xl font-bold mb-6 text-center"
