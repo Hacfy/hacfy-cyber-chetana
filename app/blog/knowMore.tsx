@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import { assets } from "@/public/assets/assets";
 
