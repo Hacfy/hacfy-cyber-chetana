@@ -87,7 +87,7 @@ export default function LoginForm() {
   style={{ marginTop: -100 }}
 >
   {/* Responsive heading */}
-  <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8" style={{ color: "var(--primary-blue)" }}>
+  <h1 className="text-2xl md:text-5xl  font-extrabold mb-20 text-center" style={{ color: "var(--primary-blue)" }}>
     Cyber Safety Pledge Registration
   </h1>
 

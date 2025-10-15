@@ -64,7 +64,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       font-size: 36px;
       font-weight: 700;
       color: #1a3b73;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .subtext {
@@ -109,7 +109,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       font-size: 18px;
       font-weight: 700;
       color: #1a3b73;
-      margin-top: 20px;
+      margin-top: 35px;
     }
   </style>
 </head>

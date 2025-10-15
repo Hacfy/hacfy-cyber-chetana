@@ -15,7 +15,7 @@ export function HeroCard() {
       <div className="w-full flex flex-col items-center py-16 md:py-6 rounded-3xl text-black px-6 md:px-12 relative">
       
         <div className="absolute  left-1/2 transform -translate-x-1/2 w-full md:w-[80%] text-center px-4">
-          <h1 className="text-3xl md:text-5xl font-extrabold " style={{ color: "var(--primary-blue)" }}>Why We Created HacFy Cyber Chetana?</h1>
+            <h1 className="text-2xl md:text-5xl  font-extrabold mb-20 text-center" style={{ color: "var(--primary-blue)" }}>Why We Created HacFy Cyber Chetana?</h1>
          
         </div>
 
