@@ -4,7 +4,9 @@ import puppeteer from 'puppeteer-core';
 import chromium from '@sparticuz/chromium';
 import fs from 'fs';
 import path from 'path';
-
+const bgPath = path.join(process.cwd(), 'public', 'assets', 'bgtmplt.jpg');
+const bgBase64 = fs.readFileSync(bgPath, { encoding: 'base64' });
+const bgSrc = `data:image/jpeg;base64,${bgBase64}`;
 // Convert logo to base64
 const logoPath = path.join(process.cwd(), 'public', 'assets', 'logo.png');
 const logoBase64 = fs.readFileSync(logoPath, { encoding: 'base64' });
@@ -32,8 +34,8 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
     }
 
     .certificate {
-      width: 11.6in;      /* A4 Landscape */
-      height: 8.2in;      /* A4 Landscape */
+      width: 11.6in;
+      height: 8.2in;
       padding: 60px;
       border: 6px solid #1a3b73;
       border-radius: 16px;
@@ -41,9 +43,27 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       box-sizing: border-box;
       text-align: center;
       background-color: #fff;
+      overflow: hidden;
     }
 
+    /* Background image with reduced opacity */
     .certificate::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('${bgSrc}');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;  /* adjust opacity as needed */
+      z-index: 0;
+      border-radius: 16px;
+    }
+
+    /* Inner colored border */
+    .certificate::after {
       content: "";
       position: absolute;
       top: 20px;
@@ -53,6 +73,12 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       border: 4px solid #f36f26;
       border-radius: 12px;
       pointer-events: none;
+      z-index: 1;
+    }
+
+    .certificate > * {
+      position: relative;
+      z-index: 2;
     }
 
     .logo img {
@@ -136,7 +162,6 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
 </body>
 </html>
 `;
-
 // POST handler for generating PDF and sending email
 export async function POST(req: NextRequest) {
   try {
