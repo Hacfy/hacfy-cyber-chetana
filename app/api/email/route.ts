@@ -18,10 +18,11 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cyber Awareness Certificate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #ffffff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -31,8 +32,8 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
     }
 
     .certificate {
-      width: 11.7in;      /* A4 Landscape */
-      height: 8.3in;      /* A4 Landscape */
+      width: 11.6in;      /* A4 Landscape */
+      height: 8.2in;      /* A4 Landscape */
       padding: 60px;
       border: 6px solid #1a3b73;
       border-radius: 16px;
@@ -55,7 +56,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
     }
 
     .logo img {
-      width: 150px;
+      width: 250px;
       margin-bottom: 10px;
     }
 
