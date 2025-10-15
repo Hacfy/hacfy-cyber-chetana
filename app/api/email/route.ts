@@ -100,7 +100,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
     .content {
       font-size: 18px;
       color: #333;
-      line-height: 1.6;
+      line-height: 1.9;
       max-width: 800px;
       margin: 0 auto 40px;
     }
