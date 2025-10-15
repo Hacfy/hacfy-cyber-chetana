@@ -1,110 +1,3 @@
-// import { NextRequest, NextResponse } from 'next/server';
-// import nodemailer from 'nodemailer';
-// import puppeteer from 'puppeteer-core';
-// import chromium from '@sparticuz/chromium'; // Ensure @sparticuz/chromium is imported
-
-// const generateCertificateHTML = (firstName: string, lastName: string) => `
-  
-// <!DOCTYPE html>
-// <html>
-//   <head>
-//     <meta charset="utf-8" />
-//     <title>Certificate</title>
-//     <style>
-//       body {
-//         font-family: Arial, sans-serif;
-//         text-align: center;
-//         padding: 50px;
-//       }
-//       .certificate {
-//         border: 10px solid #ccc;
-//         padding: 50px;
-//         max-width: 800px;
-//         margin: 0 auto;
-//         position: relative;
-//       }
-//       .logo {
-//         width: 150px;
-//         margin: 0 auto 30px;
-//         display: block;
-//       }
-//       h1 {
-//         color: #333;
-//       }
-//     </style>
-//   </head>
-//   <body>
-//     <div class="certificate">
-//       <img src="/assets/logo.png" alt="Logo" class="logo" />
-//       <h1>Certificate of Registration</h1>
-//       <p>This certifies that</p>
-//       <h2>${firstName} ${lastName}</h2>
-//       <p>has successfully registered.</p>
-//     </div>
-//   </body>
-// </html>
-
-// `;
-
-// export async function POST(req: NextRequest) {
-//   try {
-//     const { firstName, lastName, email, phoneNumber } = await req.json();
-//     if (!firstName || !lastName || !email || !phoneNumber) {
-//       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
-//     }
-
-//     const htmlContent = generateCertificateHTML(firstName, lastName);
-
-//     const isProd = process.env.NODE_ENV === 'production';
-
-//     const executablePath = isProd ? await chromium.executablePath() : undefined;
-
-// if (!executablePath && isProd) {
-//   throw new Error('Chromium executable path is not defined for production');
-// }
-
-// const browser = await puppeteer.launch({
-//   args: chromium.args,
-//   executablePath: await chromium.executablePath(),
-//   headless: true,
-// });
-
-//     const page = await browser.newPage();
-//     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-//     const pdfBuffer = await page.pdf({ format: 'a4' });
-//     await browser.close();
-
-//     const transporter = nodemailer.createTransport({
-//       host: 'smtp.gmail.com',
-//       port: 465,
-//       secure: true,
-//       auth: {
-//         user: process.env.EMAIL_USER,
-//         pass: process.env.EMAIL_PASS,
-//       },
-//     });
-
-//     await transporter.sendMail({
-//       from: process.env.EMAIL_USER,
-//       to: email,
-//       subject: 'Your Registration Certificate',
-//       text: 'Attached is your certificate of registration.',
-//       attachments: [
-//         {
-//           filename: 'certificate.pdf',
-//           content: pdfBuffer,
-//           contentType: 'application/pdf',
-//         },
-//       ],
-//     });
-
-//     return NextResponse.json({ message: 'PDF sent to email' });
-//   } catch (error: unknown) {
-//     console.error('Email PDF error:', error);
-//     return NextResponse.json({ error: `Failed: ${error instanceof Error ? error.message : 'Unknown error'}` }, { status: 500 });
-//   }
-// }
-// app/api/certificate/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import puppeteer from 'puppeteer-core';
@@ -117,7 +10,7 @@ const logoPath = path.join(process.cwd(), 'public', 'assets', 'logo.png');
 const logoBase64 = fs.readFileSync(logoPath, { encoding: 'base64' });
 const logoSrc = `data:image/png;base64,${logoBase64}`;
 
-// Generate HTML for the certificate
+// Generate HTML for professional certificate
 const generateCertificateHTML = (firstName: string, lastName: string, certificateId: string) => `
 <!DOCTYPE html>
 <html lang="en">
@@ -128,123 +21,122 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
   <style>
     body {
       background-color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
     }
 
     .certificate {
-      width: 900px;
-      padding: 50px 60px;
-      border: 5px solid #1a3b73;
+      width: 11.7in;      /* A4 Landscape */
+      height: 8.3in;      /* A4 Landscape */
+      padding: 60px;
+      border: 6px solid #1a3b73;
       border-radius: 16px;
       position: relative;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      text-align: center;
+      background-color: #fff;
     }
 
     .certificate::before {
       content: "";
       position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      border: 3px solid #f36f26;
-      border-radius: 10px;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      border: 4px solid #f36f26;
+      border-radius: 12px;
       pointer-events: none;
     }
 
-    .header {
-      text-align: center;
+    .logo img {
+      width: 150px;
       margin-bottom: 10px;
     }
 
-    .header img {
-      margin-bottom: 5px;
+    .header {
+      font-size: 36px;
+      font-weight: 700;
+      color: #1a3b73;
+      margin-bottom: 10px;
     }
 
-    .header .subtext {
+    .subtext {
+      font-size: 16px;
       color: #555;
-      font-size: 14px;
+      margin-bottom: 30px;
     }
 
     .title {
-      text-align: center;
-      font-size: 22px;
-      color: #1a3b73;
+      font-size: 24px;
       font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 40px;
+      color: #1a3b73;
+      margin-bottom: 20px;
     }
 
     .certify {
-      text-align: center;
-      font-size: 16px;
+      font-size: 18px;
       color: #444;
       letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .name {
-      text-align: center;
-      font-size: 30px;
+      font-size: 32px;
       font-weight: bold;
       color: #1a3b73;
-      border-bottom: 1px solid #1a3b73;
+      border-bottom: 2px solid #1a3b73;
       display: inline-block;
-      padding: 5px 30px;
-      margin: 10px auto;
+      padding: 10px 40px;
+      margin-bottom: 30px;
     }
 
     .content {
-      text-align: center;
-      font-size: 16px;
+      font-size: 18px;
       color: #333;
-      line-height: 1.7;
-      max-width: 750px;
-      margin: 30px auto;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 40px;
     }
 
     .certificate-id {
-      text-align: center;
       font-size: 18px;
       font-weight: 700;
       color: #1a3b73;
-      margin-top: 40px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <div class="certificate">
-    <div class="header">
-      <img src="${logoSrc}" alt="Logo" width="150"/>
-      <div class="subtext">Your Digital Safety, Our Priority</div>
+    <div class="logo">
+      <img src="${logoSrc}" alt="Logo" />
     </div>
 
-    <div class="title">CERTIFICATE OF CYBER AWARENESS COMMITMENT</div>
-
+    <div class="header">CYBER AWARENESS COMMITMENT</div>
+    <div class="subtext">Your Digital Safety, Our Priority</div>
+    <div class="title">CERTIFICATE OF ACHIEVEMENT</div>
     <div class="certify">THIS IS TO CERTIFY THAT</div>
-
     <div class="name">${firstName} ${lastName}</div>
-
     <div class="content">
-      has taken the <strong>Cyber Safety Pledge</strong> to become a
-      <strong>Cyber Awareness Ambassador</strong> with
-      <strong>HacFy Cyber Chetana</strong>, demonstrating commitment to promote
-      digital safety, responsible online behavior, and cybersecurity awareness
-      among peers and the community.
+      has successfully taken the <strong>Cyber Safety Pledge</strong> and
+      is recognized as a <strong>Cyber Awareness Ambassador</strong> with
+      <strong>HacFy Cyber Chetana</strong>, demonstrating commitment to
+      promote digital safety, responsible online behavior, and cybersecurity
+      awareness in their community.
     </div>
-
     <div class="certificate-id">Certificate ID: ${certificateId}</div>
   </div>
 </body>
 </html>
 `;
 
+// POST handler for generating PDF and sending email
 export async function POST(req: NextRequest) {
   try {
     const { firstName, lastName, email, phoneNumber } = await req.json();
@@ -256,30 +148,24 @@ export async function POST(req: NextRequest) {
     const certificateId = `2025-${Math.floor(100 + Math.random() * 900)}`;
     const htmlContent = generateCertificateHTML(firstName, lastName, certificateId);
 
-    // Puppeteer launch options
     const browser = await puppeteer.launch({
       args: chromium.args,
-      executablePath: process.env.NODE_ENV === 'production'
-        ? await chromium.executablePath()
-        : undefined,
+      executablePath: process.env.NODE_ENV === 'production' ? await chromium.executablePath() : undefined,
       headless: true,
     });
 
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
 
-    // Generate PDF
     const pdfBuffer = await page.pdf({
-      width: '11in',
-      height: '8.5in',
+      width: '11.7in',
+      height: '8.3in',
       printBackground: true,
       margin: { top: 0, right: 0, bottom: 0, left: 0 },
-      pageRanges: '1',
     });
 
     await browser.close();
 
-    // Nodemailer transporter
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
@@ -290,7 +176,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Send email with attachment
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: email,
