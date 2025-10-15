@@ -46,21 +46,18 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       overflow: hidden;
     }
 
-    /* Background image with reduced opacity */
-    .certificate::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('${bgSrc}');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;  /* adjust opacity as needed */
-      z-index: 0;
-      border-radius: 16px;
-    }
+/* Centered watermark image */
+.certificate .bg-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;       /* adjust size as needed */
+  height: auto;
+  opacity: 0.15;      /* adjust opacity */
+  z-index: 0;
+}
+
 
     /* Inner colored border */
     .certificate::after {
@@ -141,26 +138,25 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
 </head>
 <body>
   <div class="certificate">
-    <div class="logo">
-      <img src="${logoSrc}" alt="Logo" />
-    </div>
-
-    <div class="header">CYBER AWARENESS COMMITMENT</div>
-   
-    <div class="title">CERTIFICATE OF ACHIEVEMENT</div>
-    <div class="certify">THIS IS TO CERTIFY THAT</div>
-    <div class="name">${firstName} ${lastName}</div>
-    <div class="content">
-      has successfully taken the <strong>Cyber Safety Pledge</strong> and
-      is recognized as a <strong>Cyber Awareness Ambassador</strong> with
-      <strong>HacFy Cyber Chetana</strong>, demonstrating commitment to
-      promote digital safety, responsible online behavior, and cybersecurity
-      awareness in their community.
-    </div>
-    <div class="certificate-id">Certificate ID: ${certificateId}</div>
+  <img class="bg-center" src="${bgSrc}" alt="Background Image" />
+  <div class="logo">
+    <img src="${logoSrc}" alt="Logo" />
   </div>
-</body>
-</html>
+
+  <div class="header">CYBER AWARENESS COMMITMENT</div>
+  <div class="title">CERTIFICATE OF ACHIEVEMENT</div>
+  <div class="certify">THIS IS TO CERTIFY THAT</div>
+  <div class="name">${firstName} ${lastName}</div>
+  <div class="content">
+    has successfully taken the <strong>Cyber Safety Pledge</strong> and
+    is recognized as a <strong>Cyber Awareness Ambassador</strong> with
+    <strong>HacFy Cyber Chetana</strong>, demonstrating commitment to
+    promote digital safety, responsible online behavior, and cybersecurity
+    awareness in their community.
+  </div>
+  <div class="certificate-id">Certificate ID: ${certificateId}</div>
+</div>
+
 `;
 // POST handler for generating PDF and sending email
 export async function POST(req: NextRequest) {
