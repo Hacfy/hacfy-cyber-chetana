@@ -56,8 +56,8 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
     }
 
     .logo img {
-      width: 250px;
-      margin-bottom: 10px;
+      width: 350px;
+      margin-bottom: 15px;
     }
 
     .header {
@@ -120,7 +120,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
     </div>
 
     <div class="header">CYBER AWARENESS COMMITMENT</div>
-    <div class="subtext">Your Digital Safety, Our Priority</div>
+   
     <div class="title">CERTIFICATE OF ACHIEVEMENT</div>
     <div class="certify">THIS IS TO CERTIFY THAT</div>
     <div class="name">${firstName} ${lastName}</div>
