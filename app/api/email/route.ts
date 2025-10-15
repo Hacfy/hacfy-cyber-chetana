@@ -109,7 +109,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
       font-size: 18px;
       font-weight: 700;
       color: #1a3b73;
-      margin-top: 55px;
+      margin-top: 80px;
     }
   </style>
 </head>
