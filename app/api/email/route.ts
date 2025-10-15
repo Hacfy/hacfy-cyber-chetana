@@ -57,7 +57,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
 
     .logo img {
       width: 350px;
-      margin-bottom: 15px;
+      margin-bottom: 35px;
     }
 
     .header {
