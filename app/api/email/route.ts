@@ -120,96 +120,126 @@ const logoSrc = `data:image/png;base64,${logoBase64}`;
 // Generate HTML for the certificate
 const generateCertificateHTML = (firstName: string, lastName: string, certificateId: string) => `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cyber Awareness Certificate</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
       background-color: #ffffff;
       display: flex;
-      align-items: center;
       justify-content: center;
-      margin: 5;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
       padding: 0;
     }
 
     .certificate {
-      width: 1100px;       /* ~11in */
-      height: 840px;       
-      border: 6px double #1e3a8a;
-      border-radius: 8px;
-      padding: 40px 60px;
-      box-sizing: border-box;
-      text-align: center;
+      width: 900px;
+      padding: 50px 60px;
+      border: 5px solid #1a3b73;
+      border-radius: 16px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .certificate::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 3px solid #f36f26;
+      border-radius: 10px;
+      pointer-events: none;
     }
 
     .header {
-      font-size: 38px;
-      font-weight: bold;
-      color: #1e3a8a;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
-
-    .title {
-      font-size: 16px;
-      color: #000;
-      letter-spacing: 2px;
-      margin-bottom: 30px;
-    }
-
-    .name {
-      font-size: 32px;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 20px;
-      text-decoration: underline;
-    }
-
-    .description {
-      font-size: 16px;
-      color: #1e3a8a;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 40px;
-    }
-
-    .footer {
-      font-weight: bold;
-      font-size: 16px;
-      color: #1e3a8a;
-    }
-
-    .logo {
+      text-align: center;
       margin-bottom: 10px;
     }
 
-    hr {
-      width: 80%;
-      border: none;
-      border-top: 2px solid #1e3a8a;
-      margin: 20px auto;
+    .header img {
+      margin-bottom: 5px;
+    }
+
+    .header .subtext {
+      color: #555;
+      font-size: 14px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 22px;
+      color: #1a3b73;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+    }
+
+    .certify {
+      text-align: center;
+      font-size: 16px;
+      color: #444;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      color: #1a3b73;
+      border-bottom: 1px solid #1a3b73;
+      display: inline-block;
+      padding: 5px 30px;
+      margin: 10px auto;
+    }
+
+    .content {
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+      max-width: 750px;
+      margin: 30px auto;
+    }
+
+    .certificate-id {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a3b73;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <div class="certificate">
-    <div class="logo">
+    <div class="header">
       <img src="${logoSrc}" alt="Logo" width="150"/>
+      <div class="subtext">Your Digital Safety, Our Priority</div>
     </div>
 
-    <div class="header">CERTIFICATE OF CYBER AWARENESS COMMITMENT</div>
-    <div class="title">THIS IS TO CERTIFY THAT</div>
+    <div class="title">CERTIFICATE OF CYBER AWARENESS COMMITMENT</div>
+
+    <div class="certify">THIS IS TO CERTIFY THAT</div>
+
     <div class="name">${firstName} ${lastName}</div>
-    <div class="description">
-      has taken the Cyber Safety Pledge to become a Cyber Awareness Ambassador with
-      HacFy Cyber Chetana, demonstrating commitment to promote digital safety,
-      responsible online behavior, and cybersecurity awareness among peers and the community.
+
+    <div class="content">
+      has taken the <strong>Cyber Safety Pledge</strong> to become a
+      <strong>Cyber Awareness Ambassador</strong> with
+      <strong>HacFy Cyber Chetana</strong>, demonstrating commitment to promote
+      digital safety, responsible online behavior, and cybersecurity awareness
+      among peers and the community.
     </div>
-    <div class="footer">Certificate ID: ${certificateId}</div>
+
+    <div class="certificate-id">Certificate ID: ${certificateId}</div>
   </div>
 </body>
 </html>
@@ -238,10 +268,10 @@ export async function POST(req: NextRequest) {
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
 
-    // Generate PDF — fixed certificate size, single page
+    // Generate PDF
     const pdfBuffer = await page.pdf({
       width: '11in',
-      height: '8.2in',
+      height: '8.5in',
       printBackground: true,
       margin: { top: 0, right: 0, bottom: 0, left: 0 },
       pageRanges: '1',

@@ -81,6 +81,7 @@ export default function LoginForm() {
       className="w-full flex justify-center items-start px-4 pb-10 h-screen md:min-h-screen align-middle"
       style={{ alignItems: "center", marginTop: -100 }}
     >
+        <div>Take the Cyber Safety Pledge</div> 
       <div className="grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-2xl overflow-hidden w-full max-w-none mx-auto">
         <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left px-6 py-8 md:px-8 md:py-12">
           <h1
