@@ -36,10 +36,10 @@ export function HeroCard() {
 
   return (
     <section className="w-full bg-white text-black py-24 md:py-36 px-4 md:px-12 relative z-10">
-      {/* Heading */}
+      
       <div className="w-full flex flex-col items-center text-center px-4 md:px-12">
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight"
+          className="text-2xl md:text-5xl font-extrabold leading-tight"
           style={{ color: "var(--primary-blue)" }}
         >
           Why We Created HacFy Cyber Chetana?

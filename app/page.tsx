@@ -58,7 +58,7 @@ export default function Home() {
       </div>
 
       {/* Why We Created HacFy Cyber Chetana */}
-      <div className="w-full flex flex-col h-auto md:h-screen">
+      <div className="w-full">
         <HeroCard />
       </div>
 

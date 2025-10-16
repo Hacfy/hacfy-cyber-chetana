@@ -20,7 +20,7 @@ const links = [
 
 const SwiperHome = () => {
   return (
-    <section className="w-full flex flex-col items-center justify-center mt-6 md:mt-10 lg:mt-14 mb-24 md:mb-36">
+    <section className="w-full flex flex-col items-center justify-center mt-6 md:mt-10 lg:mt-14 ">
       <div
         className="text-2xl md:text-5xl font-extrabold mb-20 text-center"
         style={{ color: "var(--primary-blue)" }}

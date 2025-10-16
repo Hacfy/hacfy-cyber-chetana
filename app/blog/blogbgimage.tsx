@@ -26,12 +26,17 @@ export default function BackgroundImage() {
       </div>
 
       
-      <div className=" p-6 text-center mt-10 sm:mt-16 md:mt-20   max-w-[50%] mx-auto">
-        <div className="font-bold text-4xl  text-[#09437d] text-center">Insights. Strategies. Cyber confidence.</div>
-        <p className="text-sm  text-[#09437d] mt-5">
-         Stay informed with the latest in cybersecurity from emerging threats and technology updates to expert tips and industry trends. Our blog is your go to resource for navigating the ever-changing digital security landscape.
-        </p>
-      </div>
+      <div className="px-4 sm:px-6 lg:px-8 mt-10 sm:mt-16 md:mt-20">
+  <div className="max-w-2xl mx-auto text-center">
+    <h2 className="font-bold text-3xl sm:text-4xl text-[#09437d]">
+      Insights. Strategies. Cyber confidence.
+    </h2>
+    <p className="text-base sm:text-sm text-[#09437d] mt-4 sm:mt-5">
+      Stay informed with the latest in cybersecurity from emerging threats and technology updates to expert tips and industry trends. Our blog is your go to resource for navigating the ever-changing digital security landscape.
+    </p>
+  </div>
+</div>
+
     </div>
   );
 } 
