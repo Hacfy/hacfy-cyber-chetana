@@ -4,9 +4,9 @@ import puppeteer from 'puppeteer-core';
 import chromium from '@sparticuz/chromium';
 import fs from 'fs';
 import path from 'path';
-const bgPath = path.join(process.cwd(), 'public', 'assets', 'bgtmplt.jpg');
-const bgBase64 = fs.readFileSync(bgPath, { encoding: 'base64' });
-const bgSrc = `data:image/jpeg;base64,${bgBase64}`;
+// const bgPath = path.join(process.cwd(), 'public', 'assets', 'bgtmplt.jpg');
+// const bgBase64 = fs.readFileSync(bgPath, { encoding: 'base64' });
+// const bgSrc = `data:image/jpeg;base64,${bgBase64}`;
 // Convert logo to base64
 const logoPath = path.join(process.cwd(), 'public', 'assets', 'logo.png');
 const logoBase64 = fs.readFileSync(logoPath, { encoding: 'base64' });
@@ -138,7 +138,7 @@ const generateCertificateHTML = (firstName: string, lastName: string, certificat
 </head>
 <body>
   <div class="certificate">
-  <img class="bg-center" src="${bgSrc}" alt="Background Image" />
+
   <div class="logo">
     <img src="${logoSrc}" alt="Logo" />
   </div>
