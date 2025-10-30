@@ -183,6 +183,9 @@ export function MarqueeDemo() {
                     style: { textAnchor: "middle" },
                   }}
                 />
+
+                {/**/}
+
                 <Tooltip
                   formatter={(value, name, props) => props.payload.displayValue}
                 />
