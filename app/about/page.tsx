@@ -17,3 +17,6 @@ export default function About() {
 
   )
 }
+
+///somthing is there bruh 
+
