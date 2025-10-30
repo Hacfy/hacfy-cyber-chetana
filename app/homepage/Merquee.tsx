@@ -35,7 +35,7 @@
 //       <div className="w-fu
 //       ll max-w-7xl mx-auto">
 //         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-       
+
 // <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
 //   <h2
 //     className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-4"
@@ -46,12 +46,11 @@
 //     Rising Rapidly, Threatening Lives & Finances!
 //   </h2>
 //   <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
-//     Track the alarming rise in cybercrime incidents across Karnataka. 
-//     From financial fraud to identity theft, the numbers tell a concerning story 
+//     Track the alarming rise in cybercrime incidents across Karnataka.
+//     From financial fraud to identity theft, the numbers tell a concerning story
 //     of digital threats impacting lives and businesses.
 //   </p>
 // </div>
-
 
 //           <div className="w-full bg-white rounded-xl border-2 shadow-lg p-6">
 //             <h3
@@ -65,7 +64,7 @@
 //                 <CartesianGrid strokeDasharray="3 3" />
 //                 <XAxis type="number" />
 //                 <YAxis dataKey="category" type="category" width={120} />
-//                 <Tooltip 
+//                 <Tooltip
 //                   formatter={(value, name, props) => props.payload.displayValue}
 //                 />
 //                 <Bar dataKey="value" radius={[0, 8, 8, 0]}>
@@ -81,7 +80,6 @@
 //     </div>
 //   );
 // }
-
 
 "use client";
 
@@ -133,7 +131,6 @@ export function MarqueeDemo() {
     <div className="relative flex w-full bg-white py-10 px-4 sm:px-6 lg:px-10">
       <div className="w-full max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        
           <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
             <h2
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight mb-4"
@@ -151,7 +148,6 @@ export function MarqueeDemo() {
             </p>
           </div>
 
-         
           <div className="w-full p-6">
             <h3
               className="text-2xl font-bold mb-6 text-center"
@@ -171,7 +167,7 @@ export function MarqueeDemo() {
                   yAxisId="left"
                   orientation="left"
                   label={{
-                    value: "Cybercrime Cases (Bars)",
+                    value: "",
                     angle: -90,
                     position: "insideLeft",
                     style: { textAnchor: "middle" },
@@ -181,7 +177,7 @@ export function MarqueeDemo() {
                   yAxisId="right"
                   orientation="right"
                   label={{
-                    value: "Severity Index (Line)",
+                    value: "",
                     angle: 90,
                     position: "insideRight",
                     style: { textAnchor: "middle" },
