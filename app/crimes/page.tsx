@@ -5,10 +5,9 @@ import ImageSwiper from "@/app/crimes/component/swiper"
 
 export default function Blog() {
     return(
-        <div className="justify-center items-center  ">
+        <div className="justify-center items-center">
         <ImageSwiper/>
-    
-        <div>
+         <div>
        <ServiceCard/>
         </div>
         </div>
