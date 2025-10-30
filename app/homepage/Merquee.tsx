@@ -184,8 +184,6 @@ export function MarqueeDemo() {
                   }}
                 />
 
-                {/**/}
-
                 <Tooltip
                   formatter={(value, name, props) => props.payload.displayValue}
                 />
